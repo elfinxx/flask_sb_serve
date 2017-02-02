@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, json
 
 from card_handler import save_spend_data_form_360_reward_card
 
@@ -20,8 +20,10 @@ def hello_world():
 
 @app.route('/spend', methods=['POST'])
 def add_spending_data():
+    jdata = json.loads(request.data)
+    print(jdata)
     return 'Hello World!'
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5001)
