@@ -1,6 +1,3 @@
-from pymongo import MongoClient
-
-
 def save_spend_data_form_360_reward_card(txt):
     spend_data = txt.split('\n')
     cost = spend_data[2]
