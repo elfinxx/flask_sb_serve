@@ -1,8 +1,11 @@
+import pymysql
+
 def save_spend_data_form_360_reward_card(txt):
     spend_data = txt.split('\n')
     cost = spend_data[2]
     spend_time = spend_data[4]
-    shop = spend_data[6]
+    # shop = spend_data[6]
+    shop = "TEST"
     cost = cost.replace(',', '').replace('원', '')
 
     connection = pymysql.connect(host='mony.cbt6ak6cjhvc.ap-northeast-2.rds.amazonaws.com',
