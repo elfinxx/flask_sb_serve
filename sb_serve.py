@@ -1,13 +1,22 @@
-from flask import Flask, request, json
+from flask import Flask, request, json, jsonify
 from slacker import Slacker
 from card_handler import save_spend_data_form_360_reward_card
+import os
 
 app = Flask(__name__)
+
+SLACK_TOKEN_1 = os.environ.get("SLACK_TOKEN_1")
 
 
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+
+@app.route('/user_list', methods=['POST'])
+def get_users():
+    if request.form.get('token') == SLACK_TOKEN_1:
+        return jsonify({'text': '테스트 중입니다.'})
 
 
 @app.route('/spend', methods=['POST'])
