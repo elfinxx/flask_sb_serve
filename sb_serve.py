@@ -13,10 +13,17 @@ def hello_world():
     return 'Hello World!'
 
 
+def get_users_temp():
+    return ""
+
+
 @app.route('/user_list', methods=['POST'])
 def get_users():
     if request.form.get('token') == SLACK_TOKEN_1:
-        return jsonify({'text': '테스트 중입니다.'})
+        name = request.form.get('user_name')
+        return_msg = "{} 아저씨, 우리 인생이 게임이 아니라는 거.. 확신해요?".format(name)
+        return jsonify({'text': return_msg,
+                        'response_type': 'in_channel'})
 
 
 @app.route('/spend', methods=['POST'])
