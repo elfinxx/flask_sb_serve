@@ -17,6 +17,7 @@ def add_spending_data():
     with open("token", 'r', encoding='utf8') as f:
         for line in f:
             token = line
+    print(token.strip())
 
     if "이*민" in spend_data[2]:
         user_name = "bart"
@@ -24,7 +25,7 @@ def add_spending_data():
         user_name = "sara"
 
     r_msg = '{}가 {}에서 {} 썼습니다.'.format(user_name, spend_data[1], spend_data[0])
-    slack = Slacker(token)
+    slack = Slacker(token.strip())
     slack.chat.post_message('#mony', r_msg, as_user=True)
     return 'Hello World!'
 
