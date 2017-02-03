@@ -21,7 +21,7 @@ def hello_world():
 @app.route('/spend', methods=['POST'])
 def add_spending_data():
     jdata = json.loads(request.data)
-    print(jdata)
+    save_spend_data_form_360_reward_card(jdata)
     return 'Hello World!'
 
 
