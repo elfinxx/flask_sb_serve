@@ -21,6 +21,7 @@ def save_spend_data_form_360_reward_card(txt):
             sql = "INSERT INTO `history` (`cost`, `type`, `fullmsg`) VALUES (%s, %s, %s)"
             cursor.execute(sql, (cost, shop, txt))
         connection.commit()
+        return txt
 
     finally:
         connection.close()
